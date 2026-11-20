@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.8/theme.json",
+	"version": 3,
+	"title": "Clay",
+	"settings": {
+		"color": {
+			"palette": [
+				{ "slug": "base", "name": "Base", "color": "#F6F1EA" },
+				{ "slug": "surface", "name": "Surface", "color": "#FFFCF7" },
+				{ "slug": "contrast", "name": "Contrast", "color": "#231A14" },
+				{ "slug": "muted", "name": "Muted", "color": "#6E6158" },
+				{ "slug": "border", "name": "Border", "color": "#E4D9CC" },
+				{ "slug": "accent", "name": "Accent", "color": "#B4532A" },
+				{ "slug": "accent-soft", "name": "Accent soft", "color": "#F3E2D6" },
+				{ "slug": "on-accent", "name": "On accent", "color": "#FFFFFF" }
+			]
+		}
+	}
+}

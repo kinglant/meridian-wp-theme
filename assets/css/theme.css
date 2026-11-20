@@ -1,0 +1,243 @@
+/*
+ * Meridian — rules theme.json can't express.
+ * Kept deliberately small; everything else is in theme.json.
+ */
+
+html {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		transition: none !important;
+	}
+}
+
+::selection {
+	background: var(--wp--preset--color--accent);
+	color: var(--wp--preset--color--on-accent);
+}
+
+/* Sticky, translucent header */
+.meridian-header {
+	position: sticky;
+	top: 0;
+	z-index: 50;
+	backdrop-filter: saturate(160%) blur(12px);
+	-webkit-backdrop-filter: saturate(160%) blur(12px);
+	background: color-mix(in srgb, var(--wp--preset--color--base) 82%, transparent);
+}
+
+.admin-bar .meridian-header {
+	top: var(--wp-admin--admin-bar--height, 32px);
+}
+
+/* Block style: Card */
+.is-style-card {
+	background: var(--wp--preset--color--surface);
+	border: 1px solid var(--wp--preset--color--border);
+	border-radius: var(--wp--custom--radius--large);
+	box-shadow: var(--wp--preset--shadow--soft);
+	transition: transform var(--wp--custom--transition), box-shadow var(--wp--custom--transition);
+}
+
+.is-style-card:hover {
+	transform: translateY(-3px);
+	box-shadow: var(--wp--preset--shadow--lifted);
+}
+
+/* Block style: Eyebrow */
+p.is-style-eyebrow {
+	font-size: 0.8125rem;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--wp--preset--color--accent);
+}
+
+/* Block style: Button with arrow */
+.wp-block-button.is-style-arrow .wp-block-button__link::after {
+	content: "→";
+	display: inline-block;
+	margin-left: 0.5em;
+	transition: transform var(--wp--custom--transition);
+}
+
+.wp-block-button.is-style-arrow .wp-block-button__link:hover::after {
+	transform: translateX(3px);
+}
+
+/* Outline buttons follow the palette */
+.wp-block-button.is-style-outline > .wp-block-button__link {
+	border: 1px solid var(--wp--preset--color--border);
+	background: transparent;
+	color: var(--wp--preset--color--contrast);
+}
+
+.wp-block-button.is-style-outline > .wp-block-button__link:hover {
+	border-color: var(--wp--preset--color--contrast);
+	background: transparent;
+	color: var(--wp--preset--color--contrast);
+}
+
+.wp-block-button__link {
+	transition: background-color var(--wp--custom--transition), color var(--wp--custom--transition), border-color var(--wp--custom--transition);
+}
+
+/* Block style: Checkmark list */
+ul.is-style-checks {
+	list-style: none;
+	padding-left: 0;
+}
+
+ul.is-style-checks li {
+	position: relative;
+	padding-left: 1.75em;
+	margin-block: 0.55em;
+}
+
+ul.is-style-checks li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.35em;
+	width: 1.1em;
+	height: 1.1em;
+	border-radius: 50%;
+	background: var(--wp--preset--color--accent-soft)
+		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%233B5BFD' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+		center / 70% no-repeat;
+}
+
+/* FAQ: custom marker on details */
+.wp-block-details summary {
+	cursor: pointer;
+	list-style: none;
+	font-weight: 600;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+}
+
+.wp-block-details summary::-webkit-details-marker {
+	display: none;
+}
+
+.wp-block-details summary::after {
+	content: "+";
+	font-size: 1.4em;
+	font-weight: 400;
+	line-height: 1;
+	color: var(--wp--preset--color--muted);
+	transition: transform var(--wp--custom--transition);
+}
+
+.wp-block-details[open] summary::after {
+	transform: rotate(45deg);
+}
+
+/* Post cards in query loops */
+.meridian-post-card .wp-block-post-featured-image img {
+	transition: transform 400ms cubic-bezier(.2,.7,.3,1);
+}
+
+.meridian-post-card .wp-block-post-featured-image {
+	overflow: hidden;
+}
+
+.meridian-post-card:hover .wp-block-post-featured-image img {
+	transform: scale(1.03);
+}
+
+/* Highlighted pricing card */
+.meridian-featured {
+	outline: 2px solid var(--wp--preset--color--accent);
+	outline-offset: -2px;
+}
+
+/* Visible keyboard focus everywhere */
+:where(a, button, summary, input, textarea, select):focus-visible {
+	outline: 2px solid var(--wp--preset--color--accent);
+	outline-offset: 3px;
+	border-radius: 4px;
+}
+
+/* Initials avatar in testimonials */
+.meridian-avatar {
+	flex: 0 0 44px;
+	width: 44px;
+	height: 44px;
+	line-height: 44px;
+	padding: 0 !important;
+	border-radius: 50%;
+	margin: 0;
+}
+
+/* Footer */
+.meridian-footer-links {
+	list-style: none;
+	padding-left: 0;
+}
+
+.meridian-footer-links li {
+	margin-block: 0.4em;
+}
+
+footer.wp-block-group a {
+	color: inherit;
+	text-decoration: none;
+}
+
+footer.wp-block-group a:hover {
+	color: var(--wp--preset--color--base);
+}
+
+/* Taxonomy links read as labels, not body links */
+.wp-block-post-terms a {
+	text-decoration: none;
+}
+
+.wp-block-post-terms a:hover {
+	text-decoration: underline;
+}
+
+footer.wp-block-group .wp-block-site-title a {
+	color: var(--wp--preset--color--base);
+}
+
+/* Secondary text and hairlines on inverted (contrast-background) sections.
+   Mixed from the palette so they work in every style variation. */
+.meridian-soft {
+	color: color-mix(in srgb, var(--wp--preset--color--base) 68%, var(--wp--preset--color--contrast));
+}
+
+.meridian-soft-border {
+	border-color: color-mix(in srgb, var(--wp--preset--color--base) 16%, var(--wp--preset--color--contrast)) !important;
+}
+
+hr.meridian-soft-border {
+	color: color-mix(in srgb, var(--wp--preset--color--base) 16%, var(--wp--preset--color--contrast));
+	background-color: currentColor;
+}
+
+/* Labels on fixed-colour gradient covers stay white in every variation */
+.meridian-on-gradient {
+	color: #fff !important;
+}
+
+footer.wp-block-group a {
+	color: color-mix(in srgb, var(--wp--preset--color--base) 68%, var(--wp--preset--color--contrast));
+}
+
+/* Step numbers in the process list never shrink/wrap */
+.meridian-soft-border > p:first-child {
+	flex-shrink: 0;
+	white-space: nowrap;
+}

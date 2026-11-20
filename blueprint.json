@@ -1,0 +1,21 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"landingPage": "/",
+	"preferredVersions": { "php": "8.3", "wp": "latest" },
+	"features": { "networking": true },
+	"steps": [
+		{ "step": "login", "username": "admin", "password": "password" },
+		{
+			"step": "installTheme",
+			"themeData": {
+				"resource": "git:directory",
+				"url": "https://github.com/kinglant/meridian-wp-theme",
+				"ref": "main",
+				"refType": "branch"
+			},
+			"options": { "activate": true, "targetFolderName": "meridian" }
+		},
+		{ "step": "setSiteOptions", "options": { "blogname": "Meridian Studio", "blogdescription": "Fast, editable WordPress sites" } },
+		{ "step": "runPHP", "code": "<?php require '/wordpress/wp-load.php'; require get_stylesheet_directory() . '/demo/content.php'; meridian_demo_import();" }
+	]
+}
